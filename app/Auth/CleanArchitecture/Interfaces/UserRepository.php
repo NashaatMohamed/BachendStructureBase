@@ -11,14 +11,9 @@ class UserRepository implements UserRepositoryInterface
     public function save(UserEntity $user): void
     {
         // TODO: Implement save() method.
-
         $model = $user->getUsedModel();
-        $eloquentUser = $model->getModel();
-        $eloquentUser->name = $user->getName();
-        $eloquentUser->email = $user->getEmail();
-        $eloquentUser->password = $user->getPassword();
-        $eloquentUser->phone = $user->getPhone();
-        $eloquentUser->save();
+        $eloquentUser = resolve($model); // other way $eloquentUser = new User();
+       $eloquentUser->create($user->toArray());
     }
 
     public function findByEmail(string $email,$model = null): ?UserEntity

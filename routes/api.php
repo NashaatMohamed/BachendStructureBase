@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::group(['prefix' => "Base/api",],function () {
+Route::group(['prefix' => "Base"],function () {
         Route::post('Register', [UserController::class, 'Register']);
     }
 );
