@@ -16,8 +16,9 @@ class RegisterUseCase
     public function execute(array $registerDto): void
     {
         $hashedPassword = $this->passwordHasher->hash($registerDto['password']);
-        $user = new UserEntity(name: $registerDto['name'], email: $registerDto['email'],
-            password: $hashedPassword, phone: $registerDto['phone'] , UsedModel: $registerDto['UsedModel']);
+        $user = new UserEntity(name: $registerDto['name'] ?? null, email: $registerDto['email'] ?? null,
+            password: $hashedPassword, phone: $registerDto['phone'] ?? null, image: $registerDto['image'] ?? null,
+            role: $registerDto['role'] ?? null, status: $registerDto['status'] ?? null, gender: $registerDto['gender'] ?? null, UsedModel: $registerDto['UsedModel'] ?? null);
         $this->userRepository->save($user);
     }
 }

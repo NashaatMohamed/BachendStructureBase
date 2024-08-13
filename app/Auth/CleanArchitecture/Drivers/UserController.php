@@ -7,14 +7,9 @@ use App\Auth\Dtos\RegisterDto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest\RegisterRequest;
 use Exception;
-use Illuminate\Http\Request;
-use traits\ApiTrait;
 
 class UserController extends Controller
 {
-
-    use ApiTrait;
-
     public function __construct(public RegisterUseCase $registerUseCase, public RegisterDto $registerDto)
     {
     }
@@ -24,7 +19,6 @@ class UserController extends Controller
         try {
             $userData = $this->registerDto->buildBody($request);
             $userDataArray = $userData->toArray();
-            return $userDataArray;
             $this->registerUseCase->execute($userDataArray);
             $msg = "register Successfully";
             return $this->successResponse($msg, 200);

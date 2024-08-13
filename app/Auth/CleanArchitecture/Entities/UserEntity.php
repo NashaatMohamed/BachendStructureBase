@@ -7,25 +7,15 @@ use App\Models\User;
 class UserEntity
 {
 
-//    protected ?string $name = null;
-//    protected ?string $email = null;
-//
-//    protected ?string $password =  null;
-//    protected ?string $phone = null;
-//
-//    public function __construct(protected ?string $name = null, string $email, string $password , string $phone)
-//    {
-//        $this->name = $name;
-//        $this->email = $email;
-//        $this->password = $password;
-//        $this->phone = $phone;
-//    }
-
     public function __construct(
         public ?string $name = null ,
         public ?string $email = null,
         public ?string $password = null,
         public ?string $phone = null,
+        public ?string $image = null,
+        public ?string $role = null,
+        public ?string $status = null,
+        public ?int $gender = null,
         public $UsedModel = User::class,
     ) {
     }
@@ -53,6 +43,47 @@ class UserEntity
     public function getUsedModel()
     {
         return $this->UsedModel;
+    }
+
+
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function setGender(int $gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function getGender(): int
+    {
+        return $this->gender;
     }
 
     public function setName(string $name): void
@@ -86,6 +117,10 @@ class UserEntity
             'email' => $this->email,
             'password' => $this->password,
             "phone" => $this->phone,
+            "image" => $this->image,
+            "role" => $this->role,
+            "status" => $this->status,
+            "gender" => $this->gender,
             "UsedModel" => $this->UsedModel
         ];
     }

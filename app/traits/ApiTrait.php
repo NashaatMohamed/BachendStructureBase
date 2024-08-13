@@ -1,8 +1,7 @@
 <?php
 
-namespace traits;
+namespace App\traits;
 
-use AdminDashboard\Models\Organization\Organization;
 
 trait ApiTrait
 {
